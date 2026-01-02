@@ -1,32 +1,40 @@
+# src/config.py
 import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# 加载 .env 文件
 load_dotenv()
 
+
 class Config:
-    # 路径配置
-    BASE_DIR = Path(__file__).parent.parent.parent
+    # --- 1. 基础路径配置 ---
+    BASE_DIR = Path(__file__).parent.parent
     DATA_DIR = BASE_DIR / "data"
     DOCS_DIR = DATA_DIR / "docs"
     VECTOR_DB_DIR = DATA_DIR / "vector_db"
-    
-    # 模型配置 (这里适配 Qwen/DashScope)
-    # 建议申请阿里云 DashScope API Key (免费额度高)
-    DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY")
-    
-    # 也可以用 OpenAI 格式调用本地 Ollama
-    MODEL_NAME = "qwen-turbo"  # 或 qwen-plus, qwen-max
-    
-    # 向量模型配置 (使用中文效果好的轻量模型)
-    EMBEDDING_MODEL = "BAAI/bge-small-zh-v1.5"
-    
-    # RAG 参数
-    CHUNK_SIZE = 500    # 每个切片的大小
-    CHUNK_OVERLAP = 50  # 切片重叠部分
-    TOP_K = 3           # 检索最相关的3个片段
+    MODEL_DIR = DATA_DIR / "models"  # 新增模型目录
 
-# 自动创建目录
-Config.DOCS_DIR.mkdir(parents=True, exist_ok=True)
-Config.VECTOR_DB_DIR.mkdir(parents=True, exist_ok=True)
+    # --- 2. LLM 模型配置 (修复报错的关键) ---
+    # 这里适配 Qwen/DashScope
+    DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY")
+    MODEL_NAME = "qwen-turbo"  
+
+    # --- 3. Embedding 与 向量库配置 ---
+    # 原始模型 ID
+    EMBEDDING_MODEL_ID = "BAAI/bge-small-zh-v1.5"
+    # 本地模型绝对路径
+    LOCAL_MODEL_PATH = MODEL_DIR / "bge-small-zh-v1.5"
+
+    # 待向量化的目标文件 (示例)
+    SOURCE_FILE = DATA_DIR / "standards" / "concrete_jgj23.md"
+
+    # RAG 参数
+    CHUNK_SIZE = 500
+    CHUNK_OVERLAP = 50
+    TOP_K = 3
+
+    # --- 4. 自动初始化 ---
+    # 自动创建必要目录
+    DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    VECTOR_DB_DIR.mkdir(parents=True, exist_ok=True)
+    MODEL_DIR.mkdir(parents=True, exist_ok=True)
