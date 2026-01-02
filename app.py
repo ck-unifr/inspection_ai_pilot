@@ -1,6 +1,6 @@
 # src/app.py
 """
-uv run streamlit run app.pyDocstring for app
+uv run streamlit run app.py
 """
 
 import streamlit as st
