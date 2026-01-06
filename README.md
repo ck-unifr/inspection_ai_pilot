@@ -54,11 +54,7 @@
 
 ## 🎥 演示 (Demo)
 
-> *此处建议放置 GIF 动图，展示：输入指令 -> 调用 IoT 接口 -> 查表计算 -> 输出报告的全过程。*
-
-<div align="center">
-  <img src="https://via.placeholder.com/800x400.png?text=Placeholder+for+Application+Demo+GIF" alt="App Demo">
-</div>
+TBD
 
 ## ✨ 核心亮点 (Features)
 
