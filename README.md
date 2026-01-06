@@ -46,3 +46,10 @@ graph TD
     
     Agent -->|汇总分析| Report[✅ 自动化合规报告]
     Report --> UI
+
+
+---
+
+<div align="center">
+  <p>如果觉得这个项目对你有帮助，请给一个 ⭐️ Star 吧！</p>
+</div>
