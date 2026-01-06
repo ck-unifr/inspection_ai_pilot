@@ -50,6 +50,4 @@ graph TD
 
 ---
 
-<div align="center">
-  <p>如果觉得这个项目对你有帮助，请给一个 ⭐️ Star 吧！</p>
-</div>
+如果觉得这个项目对你有帮助，请给一个 ⭐️ Star 吧！
